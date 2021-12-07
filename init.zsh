@@ -10,13 +10,22 @@ autoload -Uz compinit && compinit
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 zstyle ':completion:*' menu select=1
 
-# 履歴の設定
+### 履歴の設定
 HISTFILE=~/.zsh_history
-HISTSIZE=1000
-SAVEHIST=10000
-setopt HIST_IGNORE_SPACE # 先頭にスペースをつけると履歴に記録しない
-setopt hist_ignore_dups
+HISTSIZE=1000000
+SAVEHIST=1000000
+
+# 同時に起動したzshの間でヒストリを共有する
 setopt share_history
+ 
+# 同じコマンドをヒストリに残さない
+setopt hist_ignore_all_dups
+ 
+# スペースから始まるコマンド行はヒストリに残さない
+setopt hist_ignore_space
+ 
+# ヒストリに保存するときに余分なスペースを削除する
+setopt hist_reduce_blanks
 
 # ディレクトリ名で cd
 setopt auto_cd
