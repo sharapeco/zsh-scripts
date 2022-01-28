@@ -8,6 +8,7 @@ alias ls='ls -vG'
 alias ll='lsd -l'
 alias la='ls -AvG'
 alias lla='lsd -al'
+alias mkdir='mkdir -p'
 alias vi=vim
 alias df='df -h'
 alias du='du -h'
