@@ -36,3 +36,9 @@ alias pren='php ~/.config/zsh/pren.php'
 
 # 打ち間違い対策
 alias bar=bat
+
+# mkdir && cd
+function mkcd() {
+	dir="$*";
+	mkdir -p "$dir" && cd "$dir";
+}
