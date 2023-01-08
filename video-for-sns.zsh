@@ -39,6 +39,57 @@ function video-for-twitter-no-audio() {
 		"${1:r}-twitter-no-audio.mp4"
 }
 
+# 動画を小さいサイズ (30fps, 720p) に変換する
+function video-size-reduce() {
+	help() {
+		echo 'Usage: video-size-reduce input'
+		echo '  foo.mp4 -> foo-reduced.mp4'
+	}
+	if [ "$1" = "" ]; then
+		help
+		return
+	fi
+
+	local filter="format=yuv420p"
+
+	local fps=`video-get-fps "${1}"`
+	case ${fps} in
+		"50" )
+			filter="${filter}, fps=25"
+		;;
+		"59.94" )
+			filter="${filter}, fps=29.97"
+		;;
+		"60" )
+			filter="${filter}, fps=30"
+		;;
+		"100" )
+			filter="${filter}, fps=25"
+		;;
+		"119.88" )
+			filter="${filter}, fps=29.97"
+		;;
+		"120" )
+			filter="${filter}, fps=30"
+		;;
+	esac
+
+	ffmpeg \
+		-i "${1}" \
+		-filter:v ${filter} \
+		-s 1280x720 \
+		"${1:r}-reduced.mp4"
+
+	local original_size=`wc -c < "${1}"`
+	local reduced_size=`wc -c < "${1:r}-reduced.mp4"`
+	printf "ORIGINAL: %'d bytes ===> REDUCED: %'d bytes\n" ${original_size} ${reduced_size}
+}
+
+# 動画のフレームレートを取得する
+function video-get-fps() {
+	ffmpeg -i "${1}" 2>&1 | sed -n "s/.*, \(.*\) fp.*/\1/p"
+}
+
 # Alexa Skill の短い音声向けに音声を変換する
 function audio-for-alexa() {
 	help() {
