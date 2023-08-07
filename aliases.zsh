@@ -15,21 +15,8 @@ alias du='du -h'
 alias du1='du -hd1'
 alias xargs-i='xargs -I "{}"'
 
-if type trash > /dev/null 2>&1; then
-	alias rm='trash -F'
-fi
-
 # Git
 alias gico='git commit -am'
-
-# Mac アプリで開く
-alias safari='open -a Safari'
-
-# 出力をクリップボードにコピー
-#
-# % command arg | C
-# ...Shift キーを押したまま打てるのがポイント
-alias C='pbcopy'
 
 # preg-rename
 alias pren='php ~/.config/zsh/pren.php'
