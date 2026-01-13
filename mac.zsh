@@ -11,6 +11,9 @@ alias sleep-log="/usr/bin/pmset -g log | rg '\b(Sleep|(Dark)?Wake) {3,}'"
 # Safari で URL を開く
 alias safari='open -a Safari'
 
+# CotEditor で開く
+alias cot='open -a CotEditor'
+
 # 出力をクリップボードにコピー
 #
 # % command arg | C
