@@ -1,5 +1,19 @@
 ### 開発に便利な関数群
 
+# レビュー用にリモートブランチを取り込む
+function ghrev() {
+	if (( $# != 1 )); then
+		echo "ghrev – GitHub のリモートブランチをレビュー用にローカルに取り込む"
+		echo "Usage: ghrev <branch-name>"
+		return 1
+	fi
+
+	local branch=$1
+
+	git fetch
+	git switch -c ${branch} --track origin/${branch}
+}
+
 # Let’s Entrypt 証明書を作成・更新する
 function lets() {
 	help() {
