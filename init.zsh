@@ -38,3 +38,6 @@ setopt auto_cd
 # => bar-1.txt bar-2.txt bar-3.txt
 autoload -Uz zmv
 alias zmv='noglob zmv -W'
+
+# VS Code のターミナルで Emacs キーバインドを有効にする
+bindkey -e
