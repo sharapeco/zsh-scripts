@@ -17,13 +17,13 @@ SAVEHIST=1000000
 
 # 同時に起動したzshの間でヒストリを共有する
 setopt share_history
- 
+
 # 同じコマンドをヒストリに残さない
 setopt hist_ignore_all_dups
- 
+
 # スペースから始まるコマンド行はヒストリに残さない
 setopt hist_ignore_space
- 
+
 # ヒストリに保存するときに余分なスペースを削除する
 setopt hist_reduce_blanks
 
@@ -38,6 +38,3 @@ setopt auto_cd
 # => bar-1.txt bar-2.txt bar-3.txt
 autoload -Uz zmv
 alias zmv='noglob zmv -W'
-
-# VS Code のターミナルで Emacs キーバインドを有効にする
-bindkey -e
