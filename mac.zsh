@@ -2,7 +2,7 @@
 
 # rm で削除のかわりにゴミ箱に移動する
 if type trash > /dev/null 2>&1; then
-	alias rm='trash -F'
+	alias rm='trash'
 fi
 
 # スリープと復帰のログを表示する
